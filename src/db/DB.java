@@ -10,9 +10,9 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class DB {
-	
+
 	private static Connection conn = null;
-	
+
 	public static Connection getConnection() {
 		if (conn == null) {
 			try {
@@ -25,7 +25,7 @@ public class DB {
 		}
 		return conn;
 	}
-	
+
 	private static Properties loadProperties() {
 		try (FileInputStream fs = new FileInputStream("db.properties")) {
 			Properties props = new Properties();
@@ -35,17 +35,17 @@ public class DB {
 			throw new DbException(e.getMessage());
 		}
 	}
-	
+
 	public static void closeConnection() {
 		if (conn != null) {
 			try {
-			conn.close();
+				conn.close();
 			} catch (SQLException e) {
 				throw new DbException(e.getMessage());
 			}
 		}
 	}
-	
+
 	public static void closeStatement(Statement st) {
 		if (st != null) {
 			try {
@@ -55,7 +55,7 @@ public class DB {
 			}
 		}
 	}
-	
+
 	public static void closeResultSet(ResultSet rs) {
 		if (rs != null) {
 			try {
